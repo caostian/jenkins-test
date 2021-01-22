@@ -38,12 +38,17 @@ function getLocalBranch() {
         exit
     fi
 
-    local mergeBranch="$1"
+    local mergeBranch="$1" # $1你的输入分支, 需要合并的分支
     local flag=0
     local index=0
-    local allBranchArr=`git branch | sed 's/*/^/g'`
+    local allBranchArr=`git branch | sed 's/*/^/g'` # 把*替换成^
+    echo $allBranchArr
+
     allBranchArr=(${allBranchArr// / })
 
+    echo 
+    echo 
+    echo $allBranchArr
     for i in ${allBranchArr[*]}
     do
         if [ "$mergeBranch" = "$i" ]
@@ -150,7 +155,7 @@ function beginMergeBranch() {
 function checkCurrent() {
     gitStatus=`git status | grep 'Changes'`
 
-    if [ -n "$gitStatus" ]
+    if [ -n "$gitStatus" ] # -n 查看当前变量是否被赋值
     then
         echo '请先把当前分支代码提交'
         exit
@@ -175,7 +180,7 @@ then
         exit
     fi
 else
-    mergeBranch="$1"
+    mergeBranch="$1" # 第一个参数
 fi
 
 checkCurrent
