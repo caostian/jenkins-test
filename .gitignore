@@ -1,0 +1,14 @@
+.idea
+.DS_Store
+.env
+storage
+phpunit
+tests
+version
+/app/Http/Controllers/Cst
+/routes/cst_test.php
+/vendor
+mergeFast.sh
+TestJob.php
+.merge.log
+
